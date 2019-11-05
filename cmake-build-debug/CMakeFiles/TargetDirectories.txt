@@ -1,0 +1,3 @@
+/Users/jasons/Source/github/morpheme/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/jasons/Source/github/morpheme/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/jasons/Source/github/morpheme/cmake-build-debug/CMakeFiles/morphene.dir
