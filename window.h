@@ -25,6 +25,7 @@ signals:
 public slots:
     void writeFile();
     void openFileDialog(bool checked);
+    void textChangedMessage();
 };
 
 #endif // WINDOW_H

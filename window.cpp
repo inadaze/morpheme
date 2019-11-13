@@ -1,4 +1,5 @@
 #include "window.h"
+#include <iostream>
 #include <QPushButton>
 #include <QApplication>
 #include <QTextEdit>
@@ -19,11 +20,12 @@ Window::Window(QWidget *parent) : QWidget(parent)
     m_open_button->setGeometry(10, 40, 80, 30);
     m_open_button->setCheckable(true);
 
-    m_filecontent = new QTextEdit("Hello", this);
-    m_filecontent->setGeometry(50, 80, 80, 30);
+    m_filecontent = new QTextEdit("Write text here...", this);
+    m_filecontent->setGeometry(50, 80, 400, 400);
 
     connect(m_button, SIGNAL (clicked(bool)), this, SLOT (writeFile()));
     connect(m_open_button, SIGNAL (clicked(bool)), this, SLOT (openFileDialog(bool)));
+    connect(m_filecontent, SIGNAL (textChanged()), this, SLOT (textChangedMessage()));
 
 }
 
@@ -64,5 +66,16 @@ void Window::openFileDialog(bool checked)
                 }
         m_filecontent->setText(m_current_file->readAll());
         m_current_file->close();
+    }
+}
+
+void Window::textChangedMessage()
+{
+    std::cerr << "The Text has changed " << std::endl;
+    if (m_filecontent->toPlainText().endsWith(" ")){
+        std::cerr << "There is a space " << std::endl;
+        // TODO: identify word before the space
+        // send request to fetch synonyms
+        // Display synonyms in new popup window
     }
 }
