@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QTextEdit>
+#include <QFile>
 
 class QPushButton;
 class Window : public QWidget
@@ -11,15 +12,19 @@ class Window : public QWidget
 public:
     explicit Window(QWidget *parent = nullptr);
 private:
+    QPushButton *m_open_button;
     QPushButton *m_button;
     QTextEdit *m_filecontent;
+    QString m_filename;
+    QFile *m_current_file;
     int m_counter;
 
 signals:
     void counterReached();
 
 public slots:
-    void slotButtonClicked(bool checked);
+    void writeFile();
+    void openFileDialog(bool checked);
 };
 
 #endif // WINDOW_H
